@@ -1,1 +1,22 @@
-<p>myrepo works!</p>
+<div class="container">
+    <div class="container">
+        <div class="card bg-dark text-white">
+            <img class="card-img" src="{{mainUser.image}}" alt="Card image">
+            <div class="card-img-overlay">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <p class="card-text"></p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <p>username: {{mainUser.username}}</p>
+
+    </div>
+    <div class="container">
+        <p>repositories</p>
+        <div *ngFor='let proj of userRepos'>
+            {{proj}}</div>
+
+    </div>
+</div>
