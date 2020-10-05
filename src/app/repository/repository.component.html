@@ -1,11 +1,11 @@
 <div class="container">
     <div class="input">
         <p>Search for user</p>
-        <input class="search" name="search" #username>
-        <button class=" search">Search</button>
+        <input class="username" name="username" #username>
+        <button class="username" (click)="searchUsername(username)">Search</button>
         <p>Search for repository</p>
-        <input class="search" name="search" #username>
-        <button class="search"> Search</button>
+        <input class="repository" name="repository" #repository>
+        <button class="search" (click)="searchRepository(repository)"> Search</button>
     </div>
     <div class="container-fluid">
         <p>Repositoires</p>
