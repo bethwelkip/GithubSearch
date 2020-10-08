@@ -1,5 +1,9 @@
 export class Repository {
-    searchRepository(repo: string) {
+    repo: string[]
+    constructor() {
+
+    }
+    searchRepository() {
 
     }
 }
