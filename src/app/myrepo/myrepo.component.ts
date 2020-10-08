@@ -18,7 +18,7 @@ export class MyrepoComponent implements OnInit {
     this.mainUser = this.serv.user;
     this.serv.getRepos()
     this.userRepos = this.serv.repository;
-    console.log(this.userRepos)
+    // console.log(this.userRepos)
 
   }
 
