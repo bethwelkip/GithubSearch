@@ -14,9 +14,13 @@
 
     </div>
     <div class="container">
-        <p>repositories</p>
-        <div *ngFor='let proj of userRepos'>
-            {{proj}}</div>
+        <div>
+            <p style="text-decoration: underline;font-size: 120%;">Repositories: </p>
+        </div>
+        <div *ngFor='let proj of userRepos; let i = index'>
+            <div *ngIf="i%2 === 0; else elseBlock">{{userRepos[i]}}</div>
+            <ng-template #elseBlock>{{userRepos[i]}}</ng-template>
+        </div>
 
     </div>
 </div>
