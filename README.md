@@ -18,7 +18,7 @@ To run the code locally, follow the steps below:
 ***********
 
 ## Technologies Used
-The project uses HTML, CSS,Bootstrap, Angular and TypeScript.
+The project uses HTML, CSS,Bootstrap, Angular and TypeScript. It was designed using [Figma](https://www.figma.com/file/rSlVxy52fbujnT1ChE8dY7/GithubSearch?node-id=0%3A1)
 
 ## Known Bugs
 There are no known bugs at the moment.If any is discovered, please don't hesitate to contact me.
