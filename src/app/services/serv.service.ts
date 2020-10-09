@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { rejects } from 'assert';
-import { User } from '../user'
+import { User } from '../classes/user'
 import { ThrowStmt } from '@angular/compiler';
-import { Repository } from '../repository';
+import { Repository } from '../classes/repository';
 import { UserComponent } from '../user/user.component';
 
 @Injectable({
@@ -20,17 +20,18 @@ export class ServService {
   searchRepo: Repository;
   searchedUser: User;
   finalUser: UserComponent;
+  TOTO: string[];
 
   constructor(private http: HttpClient) {
     this.user = new User();
     this.searchedUser = new User();
     //
-    this.searchedUser.username = "";
+    //this.searchedUser.username = "";
     //
     this.repository = [];
     this.mainRepos = [];
     this.searchRepo = new Repository();
-    // this.finalUser = new UserComponent(this)
+    this.TOTO = []
   }
 
   getUsers() {
@@ -85,17 +86,20 @@ export class ServService {
 
 
   getMainRepos(name: string) {
-    this.repoLink = this.repoLink + name;
+    // this.repoLink = this.repoLink + name;
+    let url: string = this.repoLink + name
     console.log(this.repoLink)
+    console.log(url)
     interface ApiResponse {
       items: any[];
       name: string;
       description: string;
     }
     let promise = new Promise((resolve, reject) => {
-      this.http.get<ApiResponse>(this.repoLink).toPromise().then(
+      this.http.get<ApiResponse>(url).toPromise().then(
         response => {
           //console.log(response.items[0])
+
           let i: string = response.items[0].description
           // console.log(i);
           for (let proj in response.items) {
@@ -105,6 +109,7 @@ export class ServService {
           console.log(this.mainRepos)
 
           resolve()
+          this.mainRepos = []
         }, error => {
           reject(error)
         })
@@ -112,9 +117,9 @@ export class ServService {
     return promise
   }
 
-  getSearchedUser(link: string) {
-    this.usernameLink = this.usernameLink + link;
-    console.log(this.usernameLink)
+  getSearchedUser(link) {
+    let url = this.usernameLink + link;
+    console.log(url)
 
     interface ApiResponse {
       login: string;
@@ -122,13 +127,14 @@ export class ServService {
       avatar_url: string;
     }
     let promise = new Promise((resolve, reject) => {
-      this.http.get<ApiResponse>(this.usernameLink).toPromise().then(
+      this.http.get<ApiResponse>(url).toPromise().then(
         response => {
           console.log("successful http request:   ", response)
           this.searchedUser.repo = response.repos_url;
           this.searchedUser.image = response.avatar_url;
           this.searchedUser.username = response.login;
-          console.log(this.searchedUser.username);
+          // console.log(this.searchedUser.username);
+          //this.searchedUser = new User();
           resolve()
         }, error => {
           console.log("error on http", error);
@@ -145,22 +151,24 @@ export class ServService {
   getSearchedUserRepos(url) {
     console.log("the url", url)
     interface ApiResponse {
-      items: string[];
+      name: string;
+      description: string;
     }
     let promise = new Promise((resolve, reject) => {
       this.http.get<ApiResponse>(url).toPromise().then(
         response => {
+          // console.log("repos", response)
 
-          //console.log("repos", response)
-          //this.finalUser.fillDetails(this.searchedUser)
 
-          // let i: string = response.items[0].description
-          // // console.log(i);
-          // for (let proj in response.items) {
-          //   this.mainRepos.push(response.items[proj].name)
-          //   this.mainRepos.push(response.items[proj].description)
-          // }
-          // console.log(this.mainRepos)
+          let i: string = response[0].description
+          console.log(i);
+
+          for (let proj in response) {
+            this.TOTO.push(response[proj].name)
+            this.TOTO.push(response[proj].description)
+          }
+          console.log(this.TOTO)
+
 
           resolve()
         }, error => {

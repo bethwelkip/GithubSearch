@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServService } from '../services/serv.service'
-import { User } from '../user'
+import { User } from '../classes/user'
 @Component({
   selector: 'app-myrepo',
   templateUrl: './myrepo.component.html',

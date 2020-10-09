@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Repository } from '../repository'
+import { Repository } from '../classes/repository'
 import { ServService } from '../services/serv.service';
-import { User } from '../user';
+import { User } from '../classes/user';
 import { UserComponent } from '../user/user.component';
 @Component({
   selector: 'app-repository',
@@ -37,7 +37,7 @@ export class RepositoryComponent implements OnInit {
   constructor(private serv: ServService) {
     this.repo = new Repository();
     this.displayRepos = new Array();
-    this.user = new UserComponent();
+    //this.user = new UserComponent();
     this.finalUser = new User();
     //
     this.finalUser.username = "";
