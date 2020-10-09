@@ -1,15 +1,12 @@
 <div class="container">
     <div class="input">
-        <p>Search for user</p>
-        <input class="username" name="username" #username>
-        <button class="username" (click)="searchUsername(username.value)">Search</button>
         <p>Search for repository</p>
         <input class="repository" name="repository" #repository>
         <button class="search" (click)="searchRepository(repository.value)"> Search</button>
     </div>
 
-    <div class="container-fluid">
-        <p>Repositoires</p>
+    <div class="container">
+        <p>Repositories</p>
         <div *ngFor='let repo of displayRepos; let i = index'>
             <div *ngIf='24>i'>
                 {{repo}}
